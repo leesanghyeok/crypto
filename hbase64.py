@@ -33,5 +33,3 @@ def decode(chiper):
       plain = plain + chr(int(i,2))
   return plain 
 
-print encode('abcde')
-print decode(encode('abcde'))
