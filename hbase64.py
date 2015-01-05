@@ -10,19 +10,19 @@ def encode(plain):
   if plen%3!=0:
     mc = mc + (3-plen%3)*('0'*8)
   cc = splitCount(mc,6)
-  chiper = ""
+  cipher = ""
   for i in cc:
     if i=='0'*6:
-      chiper = chiper + '='
+      cipher = cipher + '='
     else:
-      chiper = chiper + tab[int(i,2)]   
-  return chiper 
+      cipher = cipher + tab[int(i,2)]   
+  return cipher 
 
-def decode(chiper):
+def decode(cipher):
   plain = "" 
-  clen = len(chiper)
+  clen = len(cipher)
   mp = ""
-  for i in chiper:
+  for i in cipher:
     if i=='=':
       mp = mp + '0'*6
     else:
@@ -30,6 +30,6 @@ def decode(chiper):
   mc = splitCount(mp,8)
   for i in mc:
     if i!='0'*8:
-      plain = plain + chr(int(i,2))
+      plain = plain + ord(int(i,2))
   return plain 
 

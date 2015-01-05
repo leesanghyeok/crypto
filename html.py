@@ -3,13 +3,13 @@ oldtab = ['&','<','>','\'','"']
 newtab = ['&amp;','&lt;','&gt;','&#39;','&quot;']
 
 def encode(plain):
-  chiper = plain 
+  cipher = plain 
   for i in  range(len(oldtab)):
-    chiper = string.replace(chiper,oldtab[i],newtab[i])
-  return chiper
+    cipher = string.replace(chiper,oldtab[i],newtab[i])
+  return cipher
 
-def decode(chiper):
-  plain = chiper
+def decode(cipher):
+  plain = cipher
   for i in range(len(oldtab)):
     plain = string.replace(plain,newtab[i],oldtab[i])
   return plain

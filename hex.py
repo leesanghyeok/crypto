@@ -3,14 +3,14 @@ import string
 def splitCount(s, count):
   return [''.join(x) for x in zip(*[list(s[z::count]) for z in range(count)])]
 def encode(plain):
-  chiper = ""
+  cipher = ""
   for i in plain:
-    chiper = chiper + hex(ord(i))[2:]
-  return chiper
+    cipher = chiper + hex(ord(i))[2:]
+  return cipher
 
-def decode(chiper):
+def decode(cipher):
   plain = ""
-  mc = splitCount(chiper,2)
+  mc = splitCount(cipher,2)
   for i in mc:
     plain = plain + chr(int(i,16))
   return plain
