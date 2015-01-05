@@ -1,11 +1,17 @@
 import string
-
-def encrypt(plain):
-  pass
-
-def decrypt(cipher):
-  pass
+lowercase = string.ascii_lowercase
+def encrypt(plain,key):
+  cipher = ""
+  for i in plain:
+    cipher = cipher + lowercase[(lowercase.index(i)+key)%len(lowercase)]
+  return cipher
+def decrypt(cipher,key):
+  plain = ""
+  for i in cipher:
+    plain = plain + lowercase[(lowercase.index(i)-key)%len(lowercase)]
+  return plain
 
 plain = 'asdf'
-print encrypt(plain)
-print decrypt(encrypt(plain))
+key = 3
+print encrypt(plain,key)
+print decrypt(encrypt(plain,key),key)
