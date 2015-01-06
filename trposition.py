@@ -1,16 +1,16 @@
 import string
 import random
 
-lower = string.ascii_lowercase
-def keygen():
-  key = list(lower)
+lowercase = string.ascii_lowercase
+def _keygen():
+  key = list(lowercase)
   random.shuffle(key)
   return key 
 
 def encrypt(plain):
   cipher = plain
-  key = keygen()
-  tm = string.maketrans(lower,''.join(key))
+  key = _keygen()
+  tm = string.maketrans(lowercase,''.join(key))
   return cipher.translate(tm)
 
 def getNdic(text,N):
@@ -33,10 +33,10 @@ def getsortdic(dic):
 
 def decrypt(cipher):
   cntdic = {} 
-  for i in lower:
+  for i in lowercase:
     cntdic[i] = cipher.count(i)
   key = "FMAPSGVRBNIlOToKHGsYLCUDWE"
-  tm = string.maketrans(lower,key)
+  tm = string.maketrans(lowercase,key)
   cipher = cipher.translate(tm)
   print cipher
   print getsortdic(cntdic)
