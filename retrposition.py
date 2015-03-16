@@ -7,11 +7,6 @@ def _keygen():
   random.shuffle(key)
   return key 
 
-def encrypt(plain,key):
-  cipher = plain
-  tm = string.maketrans(lowercase,''.join(key))
-  return cipher.translate(tm)
-
 def getNdic(text,N):
   sp = text.split(' ')
   splist = []
@@ -29,23 +24,21 @@ def getsortdic(dic):
   dicval.sort()
   return (dic,dicval)
   
+def trposen(plain,key):
+  cipher = plain
+  tm = string.maketrans(lowercase,''.join(key))
 
-def decrypt(cipher,key):
+  return cipher.translate(tm)
+def trposde(cipher,key):
   plain = cipher
   tm = string.maketrans(''.join(key),lowercase)
   return cipher.translate(tm)
   
-
-f1 = open("read.txt", 'r')
-plain = f1.read()
-f1.close()
-#f2 = open('cipher.txt','w')
-key = _keygen()
-cipher = encrypt(plain,key)
-print cipher
-#f2.write(cipher)
-#f2.close()
-#f3 = open('cipher.txt','r')
-#cipher = f3.read()
-#f.3close
-print decrypt(cipher,key)
+if __name__=='__main__':
+  f1 = open("txt/read.txt", 'r')
+  plain = f1.read()
+  f1.close()
+  key = _keygen()
+  cipher = trposen(plain,key)
+  print cipher
+  print trposde(cipher,key)

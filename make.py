@@ -2,7 +2,7 @@ import os
 import sys
 #show the file list in current directory
 curdir = os.getcwd()
-pathlist = [f for f in os.listdir(curdir) if os.path.isfile(os.path.join(curdir,f)) and os.path.splitext(f)[1]=='.py']
+pathlist = [f for f in os.listdir(curdir) if os.path.isfile(os.path.join(curdir,f)) and os.path.splitext(f)[1]=='.py' and f!='make.py']
 #read and show the file
 textlist = []
 for i in pathlist:
