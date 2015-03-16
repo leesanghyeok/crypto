@@ -2,7 +2,7 @@ import string
 tab = string.ascii_uppercase + string.ascii_lowercase + string.digits + '+/'
 def splitCount(s, count):
   return [''.join(x) for x in zip(*[list(s[z::count]) for z in range(count)])]
-def encode(plain):
+def b64en(plain):
   plen = len(plain)
   mc = ""
   for ch in plain:
@@ -18,7 +18,7 @@ def encode(plain):
       cipher = cipher + tab[int(i,2)]   
   return cipher 
 
-def decode(cipher):
+def b64de(cipher):
   plain = "" 
   clen = len(cipher)
   mp = ""
@@ -28,8 +28,13 @@ def decode(cipher):
     else:
       mp = mp + bin(tab.index(i))[2:].zfill(6)
   mc = splitCount(mp,8)
+
   for i in mc:
     if i!='0'*8:
-      plain = plain + ord(int(i,2))
+      plain = plain + chr(int(i,2))
   return plain 
 
+if __name__ == '__main__':
+  plain = "asdf"
+  print b64en(plain)
+  print b64de(b64en(plain))
